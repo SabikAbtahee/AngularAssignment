@@ -1,39 +1,41 @@
 <div class="content formSize">
 
-<form [formGroup]="personForm" novalidate (ngSubmit)="onSubmit()">
-  <!-- <mat-card class="shipping-card"> -->
+  <form [formGroup]="this.personService.personForm" novalidate (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName="$key">
+    <!--  <mat-card class = "shipping-card"> -->
     <mat-card-header>
-      <mat-card-title>Create Person</mat-card-title>
+      <mat-card-title *ngIf="formType=='create'"><h2>Create Person</h2></mat-card-title>
+      <mat-card-title *ngIf="formType=='edit'"><h2>Edit Person</h2></mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      
+
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
             <input matInput placeholder="First name" formControlName="firstName">
-            <mat-error *ngIf="personForm.controls['firstName'].hasError('required')">
+            <mat-error *ngIf="this.personService.personForm.controls['firstName'].hasError('required')">
               First name is <strong>required</strong>
             </mat-error>
-            <mat-error *ngIf="personForm.controls['firstName'].hasError('maxlength')">
-                Max length is 50
-              </mat-error>
-              <mat-error *ngIf="personForm.controls['firstName'].hasError('minlength')">
-                  Min length is 3
-                </mat-error>
+            <mat-error *ngIf="this.personService.personForm.controls['firstName'].hasError('maxlength')">
+              Max length is 50
+            </mat-error>
+            <mat-error *ngIf="this.personService.personForm.controls['firstName'].hasError('minlength')">
+              Min length is 3
+            </mat-error>
           </mat-form-field>
         </div>
         <div class="col">
           <mat-form-field class="full-width">
             <input matInput placeholder="Last name" formControlName="lastName">
-            <mat-error *ngIf="personForm.controls['lastName'].hasError('required')">
+            <mat-error *ngIf="this.personService.personForm.controls['lastName'].hasError('required')">
               Last name is <strong>required</strong>
             </mat-error>
-            <mat-error *ngIf="personForm.controls['lastName'].hasError('maxlength')">
-                Max length is 50
-              </mat-error>
-              <mat-error *ngIf="personForm.controls['lastName'].hasError('minlength')">
-                  Min length is 3
-                </mat-error>
+            <mat-error *ngIf="this.personService.personForm.controls['lastName'].hasError('maxlength')">
+              Max length is 50
+            </mat-error>
+            <mat-error *ngIf="this.personService.personForm.controls['lastName'].hasError('minlength')">
+              Min length is 3
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -44,25 +46,31 @@
         <div class="col">
           <mat-form-field class="full-width">
             <input matInput placeholder="Email" formControlName="email">
-            <mat-error *ngIf="personForm.controls['email'].hasError('required')">
+            <mat-error *ngIf="this.personService.personForm.controls['email'].hasError('required')">
               Email is <strong>required</strong>
             </mat-error>
           </mat-form-field>
         </div>
       </div>
-      
+
       <div>
-        <mat-form-field>
-          <input matInput [max]="maxDate" [matDatepicker]="picker" placeholder="Date of Birth" formControlName="dob">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-          
-        </mat-form-field>
+        <div class="row">
+          <div class="col">
+            <mat-form-field>
+              <input matInput [max]="this.personService.maxDate" [matDatepicker]="picker" placeholder="Date of Birth" formControlName="dob">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="this.personService.personForm.controls['dob'].hasError('required')">
+                Date of Birth is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
       </div>
 
-      
+
       <div class="row">
-        
+
         <div class="col">
           <mat-form-field class="full-width">
             <mat-select placeholder="Country" formControlName="country">
@@ -70,7 +78,7 @@
                 {{ cn.name }}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="personForm.controls['country'].hasError('required')">
+            <mat-error *ngIf="this.personService.personForm.controls['country'].hasError('required')">
               Country is <strong>required</strong>
             </mat-error>
           </mat-form-field>
@@ -82,7 +90,7 @@
         <div class="col">
           <mat-form-field class="full-width">
             <input matInput #phoneNumber placeholder="Phone Number" type="tel" formControlName="phoneNumber">
-            
+
           </mat-form-field>
         </div>
       </div>
@@ -92,14 +100,18 @@
             <mat-radio-button value="Male">Male</mat-radio-button>
             <mat-radio-button value="Female">Female</mat-radio-button>
             <mat-radio-button value="Other">Other</mat-radio-button>
-            
+
           </mat-radio-group>
         </div>
       </div>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Submit</button>
-    </mat-card-actions>
-  <!-- </mat-card> -->
-</form>
+    <div class="submit">
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit" style="width:250px" *ngIf="formType=='create'">Submit</button>
+        <button mat-raised-button color="primary" type="submit" style="width:250px" *ngIf="formType=='edit'" >Update</button>
+
+      </mat-card-actions>
+    </div>
+    <!-- </mat-card> -->
+  </form>
 </div>

@@ -1,12 +1,12 @@
-<div class="mat-elevation-z8 content">
+<!-- <div class="mat-elevation-z8 content">
   <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
-    <!-- Id Column -->
+    
     <ng-container matColumnDef="Id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
       <td mat-cell *matCellDef="let row">{{row.id}}</td>
     </ng-container>
 
-    <!-- Name Column -->
+   
     <ng-container matColumnDef="FirstName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
       <td mat-cell *matCellDef="let row">{{row.firstName}}</td>
@@ -43,4 +43,23 @@
       [pageSize]="50"
       [pageSizeOptions]="[5, 10, 20, 25,30,35,40,45,50]">
   </mat-paginator>
-</div>
+</div> -->
+
+<table>
+    <ng-container *ngFor="let per of personList">
+        <tr>
+            <td>{{per.firstName}}</td>
+            <td>{{per.lastName}}</td>
+            <td>{{per.dob}}</td>
+            <td>{{per.gender}}</td>
+            <td>{{per.country}}</td>
+            <td>{{per.email}}</td>
+            <td>{{per.phoneNumber}}</td>
+            <td><button (click)="personService.populateForm(per)">Edit</button></td>
+            <td><button (click)="deletePerson(per.$key)">Delete</button></td>
+            
+            
+        </tr>
+
+    </ng-container>
+</table>

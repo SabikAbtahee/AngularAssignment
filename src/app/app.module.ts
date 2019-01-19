@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -14,6 +15,10 @@ import { UserComponent } from './user/user.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FlexLayoutComponent } from './flex-layout/flex-layout.component';
+import { PersonService } from './service/person.service';
+import {AngularFireModule} from 'angularfire2'
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+import { EditPersonComponent } from './edit-person/edit-person.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +29,8 @@ import { FlexLayoutComponent } from './flex-layout/flex-layout.component';
     UserComponent,
     NotFoundComponent,
     DashboardComponent,
-    FlexLayoutComponent
+    FlexLayoutComponent,
+    EditPersonComponent
   ],
   imports: [
     BrowserModule,
@@ -48,9 +54,12 @@ import { FlexLayoutComponent } from './flex-layout/flex-layout.component';
     MatMenuModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
+  
   ],
-  providers: [],
+  providers: [PersonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

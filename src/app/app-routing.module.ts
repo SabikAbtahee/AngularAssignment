@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user/user.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EditPersonComponent } from './edit-person/edit-person.component';
+// import { Server } from 'https';
 
 const routes: Routes = [
   {
@@ -15,6 +17,10 @@ const routes: Routes = [
   {
     path     : 'person/create',
     component: CreatePersonComponent
+  },
+  {
+    path     : 'person/edit',
+    component: EditPersonComponent
   },
   {
     path     : 'user',

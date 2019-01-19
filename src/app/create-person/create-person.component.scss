@@ -15,13 +15,25 @@
 .row {
   display: flex;
   flex-direction: row;
+  margin: 20px;
 }
 
 .col {
   flex: 1;
   margin-right: 20px;
+  margin: 20px;
 }
 
 .col:last-child {
   margin-right: 0;
+}
+.submit{
+
+  text-align: center;
+  
+
+  
+}
+.button{
+  width: 400px;
 }
