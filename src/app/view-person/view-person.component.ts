@@ -1,6 +1,6 @@
 import { PersonService } from './../service/person.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { ViewPersonDataSource } from './view-person-datasource';
 
 @Component({
@@ -11,11 +11,12 @@ import { ViewPersonDataSource } from './view-person-datasource';
 export class ViewPersonComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  dataSource: ViewPersonDataSource;
+  // dataSource: ViewPersonDataSource;
   personList=[];
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['Id','FirstName', 'LastName','DateOfBirth','Edit','Delete'];
+  personData:MatTableDataSource<any>;
+  displayedColumns :string[]= ['FirstName', 'LastName','Email','Gender','PhoneNumber','Edit','Delete'];
 
   constructor(private personService:PersonService){
 
@@ -33,9 +34,10 @@ export class ViewPersonComponent implements OnInit {
           }
           
         });
+        this.personData= new MatTableDataSource(this.personList);
       }
     );
-    this.dataSource = new ViewPersonDataSource(this.paginator, this.sort);
+    // this.dataSource = new ViewPersonDataSource(this.paginator, this.sort);
   }
 
 

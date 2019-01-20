@@ -26,7 +26,7 @@ export class PersonService {
       country: [null, Validators.required],
       phoneNumber: [''],
       gender: ['Other', Validators.required],
-      dob: ['', Validators.compose([Validators.max(this.maxDate)])],
+      dob: [null, Validators.compose([Validators.max(this.maxDate)])],
       
     });
     
