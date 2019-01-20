@@ -2,6 +2,7 @@ import { PersonService } from './../service/person.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { ViewPersonDataSource } from './view-person-datasource';
+import { debug } from 'util';
 
 @Component({
   selector: 'app-view-person',
@@ -16,10 +17,10 @@ export class ViewPersonComponent implements OnInit {
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   personData:MatTableDataSource<any>;
-  displayedColumns :string[]= ['FirstName', 'LastName','Email','Gender','PhoneNumber','Edit','Delete'];
+  displayedColumns :string[]= ['FirstName', 'LastName','Email','Gender','PhoneNumber','Country','Action','DOB'];
 
   constructor(private personService:PersonService){
-
+    this.personService.getPersonCount();
   }
 
   ngOnInit() {
@@ -35,9 +36,12 @@ export class ViewPersonComponent implements OnInit {
           
         });
         this.personData= new MatTableDataSource(this.personList);
+        debugger;
+        this.personData.sort=this.sort;
+        this.personData.paginator=this.paginator;
       }
     );
-    // this.dataSource = new ViewPersonDataSource(this.paginator, this.sort);
+    // this.personData = new MatTableDataSource(this.paginator, this.sort);
   }
 
 

@@ -19,16 +19,16 @@ export class CreatePersonComponent implements OnInit{
   hasUnitNumber = false;
 
   country = [
-    { name: 'Alabama', abbreviation: 'AL' },
-    { name: 'Alaska', abbreviation: 'AK' },
-    { name: 'American Samoa', abbreviation: 'AS' },
-    { name: 'Arizona', abbreviation: 'AZ' },
-    { name: 'Arkansas', abbreviation: 'AR' },
-    { name: 'California', abbreviation: 'CA' },
-    { name: 'Colorado', abbreviation: 'CO' },
-    { name: 'Connecticut', abbreviation: 'CT' },
-    { name: 'Delaware', abbreviation: 'DE' },
-    { name: 'District Of Columbia', abbreviation: 'DC' },
+    { name: 'Alabama', abbreviation: 'Alabama' },
+    { name: 'Alaska', abbreviation: 'Alaska' },
+    { name: 'American Samoa', abbreviation: 'American Samoa' },
+    { name: 'Arizona', abbreviation: 'Arizona' },
+    { name: 'Arkansas', abbreviation: 'Arkansas' },
+    { name: 'California', abbreviation: 'California' },
+    { name: 'Colorado', abbreviation: 'Colorado' },
+    { name: 'Connecticut', abbreviation: 'Connecticut' },
+    { name: 'Delaware', abbreviation: 'Delaware' },
+    { name: 'District Of Columbia', abbreviation: 'District Of Columbia' },
     { name: 'Federated States Of Micronesia', abbreviation: 'FM' },
     { name: 'Florida', abbreviation: 'FL' },
     { name: 'Georgia', abbreviation: 'GA' },
@@ -90,6 +90,7 @@ export class CreatePersonComponent implements OnInit{
 
   onSubmit() {
     if (!this.personService.personForm.valid) {
+      debugger;
       alert("Please fill out the form");
       // insert into firebase if key is null else edit the value.
 

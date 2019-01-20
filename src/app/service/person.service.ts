@@ -16,7 +16,7 @@ export class PersonService {
   maxDate;
 
   constructor(private fb: FormBuilder,private db:AngularFireDatabase,private router : Router,private activatedRoute: ActivatedRoute,) {
-
+    
     this.setMaxDate();
     this.personForm = this.fb.group({
       $key:[null],
@@ -26,7 +26,7 @@ export class PersonService {
       country: [null, Validators.required],
       phoneNumber: [''],
       gender: ['Other', Validators.required],
-      dob: [null, Validators.compose([Validators.max(this.maxDate)])],
+      dob: [null, Validators.compose([Validators.required,Validators.max(this.maxDate)])],
       
     });
     
@@ -85,10 +85,11 @@ export class PersonService {
       email: personInformation.email,
       country: personInformation.country,
       gender: personInformation.gender,
-      // dob: personInformation.dob.toString(),
-      dob: personInformation.dob,
+      
+      dob:(personInformation.dob.getDate().toString()+'/'+(personInformation.dob.getMonth()+1).toString()+'/'+personInformation.dob.getFullYear().toString()),
       phoneNumber: personInformation.phoneNumber,
     }
+    debugger;
     console.log(typeof(personInformation.dob));
     
     return this.personInfo;
