@@ -9,6 +9,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   providedIn: 'root'
 })
 export class PersonService {
+
+
   personList:AngularFireList<any>;
   personCount;
   personForm: FormGroup;
@@ -27,34 +29,24 @@ export class PersonService {
       phoneNumber: [''],
       gender: ['Other', Validators.required],
       dob: [null, Validators.compose([Validators.required,Validators.max(this.maxDate)])],
-      
     });
     
   }
-
-
-
-
-
   getPersonList(){
     this.personList=this.db.list('person');
     
     return this.personList.snapshotChanges();
   }
-
   insertPerson(person){
     this.personList.push(this.createPerson(person));
     this.getPersonCount();
+    this.goToViewPersonPage();
   }
-
-
-
   setMaxDate() {
     let dmy = new Date();
     this.maxDate = new Date(dmy.getFullYear(), dmy.getMonth(), dmy.getDate());
     
   }
-
   populateForm(person){
     this.personForm.setValue(person);
     this.router.navigate([`person/edit`] , { relativeTo: this.activatedRoute.parent});
@@ -64,20 +56,24 @@ export class PersonService {
       this.personList.update(person.$key,
         this.createPerson(person));
         this.getPersonCount();
+        this.goToViewPersonPage();
   }
   deletePerson(personKey:string){
     this.personList.remove(personKey);
     this.getPersonCount();
+    this.goToViewPersonPage();
   }
   getPersonCount(){
     this.personCount= this.db.list('person').snapshotChanges().subscribe(list => this.personCount = list);
   }
-
-
-
-
+  goToViewPersonPage(){
+    this.router.navigate([`person/view`] , { relativeTo: this.activatedRoute.parent});
+  }
   createPerson(personInformation) {
 
+    if(personInformation.dob==null){
+      personInformation.dob=new Date();
+    }
     this.personInfo = {
       
       firstName: personInformation.firstName,
@@ -86,10 +82,12 @@ export class PersonService {
       country: personInformation.country,
       gender: personInformation.gender,
       
-      dob:(personInformation.dob.getDate().toString()+'/'+(personInformation.dob.getMonth()+1).toString()+'/'+personInformation.dob.getFullYear().toString()),
+      // dob:(personInformation.dob.getDate().toString()+'/'+(personInformation.dob.getMonth()+1).toString()+'/'+personInformation.dob.getFullYear().toString()),
+      
+      dob:(personInformation.dob.toISOString()),
       phoneNumber: personInformation.phoneNumber,
     }
-    debugger;
+    
     console.log(typeof(personInformation.dob));
     
     return this.personInfo;

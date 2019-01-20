@@ -1,8 +1,9 @@
 import { PersonService } from './../service/person.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ViewChildren, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { person } from '../interface/person.interface';
 import { debug } from 'util';
+import { EditPersonComponent } from '../edit-person/edit-person.component';
 // import { type } from 'os';
 
 @Component({
@@ -16,6 +17,7 @@ export class CreatePersonComponent implements OnInit{
 
 
   @Input('formType') formType='create';
+  @Output() updatePerson = new EventEmitter<string>();
   hasUnitNumber = false;
 
   country = [
@@ -90,22 +92,18 @@ export class CreatePersonComponent implements OnInit{
 
   onSubmit() {
     if (!this.personService.personForm.valid) {
-      debugger;
-      alert("Please fill out the form");
-      // insert into firebase if key is null else edit the value.
-
+      // alert("Please fill out the form");
+      // insert into firebase if key is null else edit the value
     }
     else if(this.personService.personForm.valid){
-      alert('Thanks for Registering!');
       if(this.personService.personForm.get('$key').value==null){
         this.personService.insertPerson(this.personService.personForm.value);
-        this.personService.personForm.reset();
-        console.log("Inserted");
       }
       else{
-        this.personService.updatePerson(this.personService.personForm.value);
-    
+        this.updatePerson.emit(this.personService.personForm.value);
       }
+      this.personService.personForm.reset();
+      this.personService.goToViewPersonPage();
     }
 
   }

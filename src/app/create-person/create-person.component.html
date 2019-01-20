@@ -57,8 +57,8 @@
         <div class="row">
           <div class="col">
             <mat-form-field>
-              <input matInput [max]="this.personService.maxDate" [matDatepicker]="picker" placeholder="Date of Birth" formControlName="dob" *ngIf="formType=='create'">
-              <input matInput [max]="this.personService.maxDate" [matDatepicker]="picker" placeholder="Date of Birth" formControlName="dob" *ngIf="formType=='edit'">
+              <input matInput [max]="this.personService.maxDate" [matDatepicker]="picker" placeholder="Date of Birth" formControlName="dob">
+              <!-- <input matInput [max]="this.personService.maxDate" [matDatepicker]="picker" placeholder="Date of Birth" formControlName="dob" *ngIf="formType=='edit'"> -->
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
               <mat-error *ngIf="this.personService.personForm.controls['dob'].hasError('required')">
@@ -101,7 +101,9 @@
             <mat-radio-button value="Male">Male</mat-radio-button>
             <mat-radio-button value="Female">Female</mat-radio-button>
             <mat-radio-button value="Other">Other</mat-radio-button>
-
+            <mat-error *ngIf="this.personService.personForm.controls['gender'].hasError('required')">
+                Gender is <strong>required</strong>
+              </mat-error>
           </mat-radio-group>
         </div>
       </div>
@@ -110,7 +112,7 @@
       <mat-card-actions>
         <button mat-raised-button color="primary" type="submit" style="width:250px" *ngIf="formType=='create'">Submit</button>
         <button mat-raised-button color="primary" type="submit" style="width:250px" *ngIf="formType=='edit'" >Update</button>
-
+        
       </mat-card-actions>
     </div>
     <!-- </mat-card> -->

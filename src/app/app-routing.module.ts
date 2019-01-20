@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user/user.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+// import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditPersonComponent } from './edit-person/edit-person.component';
 // import { Server } from 'https';
 
@@ -26,10 +26,7 @@ const routes: Routes = [
     path     : 'user',
     component: UserComponent
   },
-  {
-    path     : 'dashboard',
-    component: DashboardComponent
-  },
+ 
   {
     path     : 'flexlayout',
     component: FlexLayoutComponent

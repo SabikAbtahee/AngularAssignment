@@ -1,8 +1,9 @@
 import { PersonService } from './../service/person.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ContentChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { ViewPersonDataSource } from './view-person-datasource';
+// import { ViewPersonDataSource } from './view-person-datasource';
 import { debug } from 'util';
+import { DialogService } from '../service/dialog.service';
 
 @Component({
   selector: 'app-view-person',
@@ -17,9 +18,9 @@ export class ViewPersonComponent implements OnInit {
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   personData:MatTableDataSource<any>;
-  displayedColumns :string[]= ['FirstName', 'LastName','Email','Gender','PhoneNumber','Country','Action','DOB'];
+  displayedColumns :string[]= ['firstName', 'lastName','email','gender','phoneNumber','dob','country','Action'];
 
-  constructor(private personService:PersonService){
+  constructor(private personService:PersonService,public dialogService:DialogService){
     this.personService.getPersonCount();
   }
 
@@ -36,7 +37,8 @@ export class ViewPersonComponent implements OnInit {
           
         });
         this.personData= new MatTableDataSource(this.personList);
-        debugger;
+        
+        
         this.personData.sort=this.sort;
         this.personData.paginator=this.paginator;
       }
@@ -46,8 +48,16 @@ export class ViewPersonComponent implements OnInit {
 
 
   deletePerson(personKey){
-    alert("Are you sure to delete this person");
-    this.personService.deletePerson(personKey);
-    this.personService.getPersonCount();
+ 
+    this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
+    .afterClosed().subscribe(res =>{
+      if(res){
+        this.personService.deletePerson(personKey);
+        
+      }
+    });
   }
+
+
+
 }
