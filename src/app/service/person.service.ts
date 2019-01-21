@@ -27,7 +27,7 @@ export class PersonService {
       email: [null, Validators.compose([Validators.email, Validators.required, Validators.maxLength(50)])],
       country: [null, Validators.required],
       phoneNumber: [''],
-      gender: ['Other', Validators.required],
+      gender: [null, Validators.required],
       dob: [null, Validators.compose([Validators.required,Validators.max(this.maxDate)])],
     });
     
