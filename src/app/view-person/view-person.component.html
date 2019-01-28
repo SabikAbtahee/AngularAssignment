@@ -3,74 +3,71 @@
     <mat-icon>add</mat-icon>Create
 
   </button>
-<!-- </div> -->
+  <!-- </div> -->
 
-<div class="mat-elevation-z8 content">
-  <mat-table mat-table  matSort class="full-width-table" [dataSource]="personData"  aria-label="Elements">
+  <div class="mat-elevation-z8 content">
+    <mat-table mat-table matSort class="full-width-table" [dataSource]="personData" aria-label="Elements">
 
-    <!-- <ng-container matColumnDef="Id">
+      <!-- <ng-container matColumnDef = "Id">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
+      <mat-cell *matCellDef = "let row">{{row.id}}</mat-cell>
     </ng-container> -->
 
 
-    <ng-container matColumnDef="firstName" >
-      <mat-header-cell *matHeaderCellDef mat-sort-header>FirstName</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.firstName}}</mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="firstName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>FirstName</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.firstName}}</mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="lastName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>LastName</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.lastName}}</mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="lastName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>LastName</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.lastName}}</mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.email}}</mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.email}}</mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="gender">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Gender</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.gender}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="dob">
+      <ng-container matColumnDef="gender">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Gender</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.gender}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="dob">
         <mat-header-cell *matHeaderCellDef mat-sort-header>DOB</mat-header-cell>
         <mat-cell *matCellDef="let row ">{{row.dob| date:short}}</mat-cell>
-        
+
       </ng-container>
 
-    <ng-container matColumnDef="phoneNumber">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>PhoneNumber</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.phoneNumber}}</mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="phoneNumber">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>PhoneNumber</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.phoneNumber}}</mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="country">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Country</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.country}}</mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="country">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Country</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.country}}</mat-cell>
+      </ng-container>
 
 
-    <ng-container matColumnDef="Action" >
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell  *matCellDef="let row">
-        <button mat-icon-button><i class="material-icons" (click)="personService.populateForm(row)">edit</i></button>
-        
-          
-          <button mat-icon-button> <i class="material-icons" (click)="deletePerson(row.$key)" >delete</i></button>
+      <ng-container matColumnDef="Action">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-icon-button><i class="material-icons" (click)="personService.populateForm(row)">edit</i></button>
+
+
+          <button mat-icon-button> <i class="material-icons" (click)="deletePerson(row.$key)">delete</i></button>
         </mat-cell>
       </ng-container>
-  
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
-  <mat-paginator [length]="100"
-              [pageSize]="5"
-              showFirstLastButtons
-              [pageSizeOptions]="[5, 10, 15, 20]">
-              
-</mat-paginator>
 
-  
-</div>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [length]="5" [pageSize]="5" showFirstLastButtons [pageSizeOptions]="[5, 10, 15, 20]">
+
+    </mat-paginator>
+
+
+  </div>
 </div>

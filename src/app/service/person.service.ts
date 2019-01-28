@@ -66,6 +66,10 @@ export class PersonService {
   getPersonCount(){
     this.personCount= this.db.list('person').snapshotChanges().subscribe(list => this.personCount = list);
   }
+  returnCount(){
+    return this.personCount;
+  }
+  
   goToViewPersonPage(){
     this.router.navigate([`person/view`] , { relativeTo: this.activatedRoute.parent});
   }

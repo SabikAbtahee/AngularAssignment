@@ -1,0 +1,25 @@
+[debug] [2019-01-21T10:02:51.562Z] ----------------------------------------------------------------------
+[debug] [2019-01-21T10:02:51.565Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\sabik.abtahee\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2019-01-21T10:02:51.565Z] CLI Version:   6.3.0
+[debug] [2019-01-21T10:02:51.565Z] Platform:      win32
+[debug] [2019-01-21T10:02:51.565Z] Node Version:  v10.15.0
+[debug] [2019-01-21T10:02:51.567Z] Time:          Mon Jan 21 2019 16:02:51 GMT+0600 (Bangladesh Standard Time)
+[debug] [2019-01-21T10:02:51.567Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-01-21T10:02:51.580Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-01-21T10:02:51.581Z] > authorizing via signed-in user
+[debug] [2019-01-21T10:02:51.581Z] [iam] checking project crud-21b93 for permissions ["firebase.projects.get"]
+[debug] [2019-01-21T10:02:51.584Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/crud-21b93:testIamPermissions  
+
+[debug] [2019-01-21T10:02:52.939Z] <<< HTTP RESPONSE 200
+[debug] [2019-01-21T10:02:52.943Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/crud-21b93  
+ 
+[debug] [2019-01-21T10:02:54.279Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\Project\Assignment Hasan Vai\AngularAssignment'...
+[info] 
+[debug] [2019-01-21T10:02:54.289Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/721540607771/clients/_:getWebAppConfig  
+ 
+[debug] [2019-01-21T10:02:54.894Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: dist
+[info] +  hosting: Local server: http://localhost:5000

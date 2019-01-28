@@ -82,7 +82,7 @@ export class CreatePersonComponent implements OnInit{
     { name: 'Wyoming', abbreviation: 'WY' }
   ];
 
-  constructor(private personService:PersonService) {
+  constructor(public personService:PersonService) {
 
     
   }

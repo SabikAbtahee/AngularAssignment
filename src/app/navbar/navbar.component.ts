@@ -17,7 +17,7 @@ export class NavbarComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver,private personService:PersonService,private overlayContainer: OverlayContainer) {}
+  constructor(private breakpointObserver: BreakpointObserver,public personService:PersonService,private overlayContainer: OverlayContainer) {}
  
       themeChange(value){
         this.themeClass=value;

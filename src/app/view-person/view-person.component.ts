@@ -15,6 +15,7 @@ export class ViewPersonComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   // dataSource: ViewPersonDataSource;
   personList=[];
+  
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   personData:MatTableDataSource<any>;
@@ -53,9 +54,23 @@ export class ViewPersonComponent implements OnInit {
     .afterClosed().subscribe(res =>{
       if(res){
         this.personService.deletePerson(personKey);
-        
+        this.checkPagination();
       }
     });
+  }
+
+  checkPagination(){
+    // this.paginator.pageIndex = 0;
+    // console.log(this.paginator.pageIndex);
+    let index=this.paginator.pageIndex;
+    let size=this.paginator.pageSize;
+    
+    let personCount=(this.paginator._length-1);
+    
+    if((index*size)>=personCount){
+      this.paginator.pageIndex = this.paginator.pageIndex-1;
+    }
+    
   }
 
 
