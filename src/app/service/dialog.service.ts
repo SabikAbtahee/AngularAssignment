@@ -20,10 +20,10 @@ export class DialogService {
 
   openConfirmDialog(msg){
     return this.matDialog.open(DeleteModalBoxComponent,{
-       width: '390px',
+       width: '400px',
        panelClass: 'confirm-dialog-container',
        disableClose: true,
-       position: { top: "10px" },
+       position: { top: "20%" },
        data :{
          message : msg
        }

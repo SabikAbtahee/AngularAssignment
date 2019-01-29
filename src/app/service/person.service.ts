@@ -88,11 +88,11 @@ export class PersonService {
       
       // dob:(personInformation.dob.getDate().toString()+'/'+(personInformation.dob.getMonth()+1).toString()+'/'+personInformation.dob.getFullYear().toString()),
       
-      dob:(personInformation.dob.toISOString()),
+      // dob:(personInformation.dob.toISOString()),
+      dob:(personInformation.dob),
       phoneNumber: personInformation.phoneNumber,
     }
     
-    console.log(typeof(personInformation.dob));
     
     return this.personInfo;
 

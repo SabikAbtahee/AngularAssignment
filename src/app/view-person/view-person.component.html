@@ -1,9 +1,18 @@
 <div class="content">
+  <div class="content">
   <button mat-raised-button [routerLink]="['/person/create']">
     <mat-icon>add</mat-icon>Create
 
   </button>
-  <!-- </div> -->
+</div>
+  <div class="content">
+    <mat-form-field class="search-form-field" floatLabel="never">
+      <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+      <button mat-button matSuffix mat-icon-button aria-lable="Clear" *ngIf="searchKey" (click)="onSearchClear()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
 
   <div class="mat-elevation-z8 content">
     <mat-table mat-table matSort class="full-width-table" [dataSource]="personData" aria-label="Elements">
@@ -56,7 +65,7 @@
           <button mat-icon-button><i class="material-icons" (click)="personService.populateForm(row)">edit</i></button>
 
 
-          <button mat-icon-button> <i class="material-icons" (click)="deletePerson(row.$key)">delete</i></button>
+          <button mat-icon-button> <i class="material-icons" (click)="deletePerson(row.$key)" style="color:red;">delete</i></button>
         </mat-cell>
       </ng-container>
 
@@ -70,4 +79,9 @@
 
 
   </div>
+
+  <div class="alert alert-danger" *ngIf="showDeletedMessage">
+    Deleted successfully.
+  </div>
+  
 </div>
