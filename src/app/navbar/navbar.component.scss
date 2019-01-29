@@ -1,9 +1,16 @@
 .sidenav-container {
   height: 100%;
+  
 }
 
 .sidenav {
   width: 300px;
+  text-align: center;
+  
+}
+.sidenav-middle {
+  display: inline-block;
+  
 }
 
 .sidenav .mat-toolbar {

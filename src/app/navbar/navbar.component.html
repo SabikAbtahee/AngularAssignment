@@ -4,11 +4,11 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="!(isHandset$ | async)">
-    <mat-toolbar>Welcome</mat-toolbar>
+    <mat-toolbar class="sidenav-middle" style="margin-top:2%;">Welcome</mat-toolbar>
 
-    <mat-nav-list>
+    <mat-nav-list class="sidenav-middle">
         
-          <div class="flex-item img-wrap">
+          <div class="flex-item img-wrap ">
             <img src="https://www.w3schools.com/bootstrap/img_avatar1.png" alt="" width="100%" height="20%">
           </div>
           
@@ -21,6 +21,8 @@
       
     </mat-nav-list>
   </mat-sidenav>
+
+
   <mat-sidenav-content>
     <mat-toolbar>
         
